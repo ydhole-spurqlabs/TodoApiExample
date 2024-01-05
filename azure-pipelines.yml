@@ -6,19 +6,15 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  - name: GitHubUsername
-    value: 'ydhole-spurqlabs'
-
 steps:
-  - script: |
-      git config --global user.email "yogesh.dhole@spurqlabs.com"
-      git config --global user.name "ydhole-spurqlabs"
-    displayName: 'Set Git Config'
+- script: |
+    git config --global user.email "yogesh.dhole@spurqlabs.com"
+    git config --global user.name "ydhole-spurqlabs"
+  displayName: 'Set Git Config'
 
-  - checkout: self
+- checkout: self
 
-  - script: |
-      git remote add github https://$(GitHubUsername):${{ secrets.PAT }}@github.com/ydhole-spurqlabs/backuprepo
-      git push github --mirror --force
-    displayName: 'Push to GitHub'
+- script: |
+    git remote add github https://ydhole-spurqlabs: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@github.com/ydhole-spurqlabs/backuprepo
+    git push github --mirror --force
+  displayName: 'Push to GitHub'
