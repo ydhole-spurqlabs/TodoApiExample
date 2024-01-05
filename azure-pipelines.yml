@@ -16,5 +16,5 @@ steps:
 
 - script: |
     git remote add github https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExampleBackup.git
-    git push -f github --mirror
+    git push github --mirror --force
   displayName: 'Push to GitHub'
