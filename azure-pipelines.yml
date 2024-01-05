@@ -36,8 +36,10 @@ pool:
 steps:
 - checkout: self
 - bash: |
-    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --all
-    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --tags
+    git remote add origin_with_token https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExample
+    git push --prune origin_with_token --all
+    git push --prune origin_with_token --tags
   displayName: 'to GitHub'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+
 
