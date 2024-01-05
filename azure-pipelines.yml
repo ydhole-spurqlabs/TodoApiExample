@@ -62,8 +62,8 @@ steps:
 
 - bash: |
     git remote add origin_with_token https://${{ variables.GitHubUsername }}:${{ variables.GitHubPAT }}@github.com/spurqlabs/TodoApiExample
-    git push --prune origin_with_token --all
-    git push --prune origin_with_token --tags
+    git push origin_with_token --all
+    git push origin_with_token --tags
   displayName: 'Push to GitHub'
 
 - bash: |
