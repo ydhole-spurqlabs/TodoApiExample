@@ -36,6 +36,8 @@ pool:
 steps:
 - checkout: self
 - bash: |
-    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --all --tags
+    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --all
+    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --tags
   displayName: 'to GitHub'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+
