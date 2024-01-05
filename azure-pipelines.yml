@@ -28,7 +28,7 @@
 
 #Azure-pipeline.yml for reference
 trigger:
-- master #your feature Branch, Run this pipeline from your feature branch.
+- master
 
 pool:
   vmImage: ubuntu-latest
@@ -36,7 +36,6 @@ pool:
 steps:
 - checkout: self
 - bash: |
-    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample \
-    +refs/remotes/origin/master:refs/heads/master +refs/tags/*:refs/tags/*
+    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample --all --tags
   displayName: 'to GitHub'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
