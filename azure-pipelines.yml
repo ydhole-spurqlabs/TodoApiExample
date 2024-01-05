@@ -16,5 +16,5 @@ steps:
 
 - script: |
     git remote add github https://ydhole-spurqlabs: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@github.com/ydhole-spurqlabs/backuprepo
-    git push github --mirror --force
+    git push -u origin main github --mirror --force
   displayName: 'Push to GitHub'
