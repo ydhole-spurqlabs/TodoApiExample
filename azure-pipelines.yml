@@ -1,8 +1,7 @@
-on:
-  push:
-    branches:
-      exclude:
-        - main
+trigger:
+  branches:
+    exclude:
+      - '*'
 
 pool:
   vmImage: 'windows-latest'
