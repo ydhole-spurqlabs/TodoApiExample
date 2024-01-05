@@ -6,6 +6,12 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  - name: GitHubUsername
+    value: 'ydhole-spurqlabs'
+  - name: GitHubPAT
+    value: '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'
+
 steps:
 - script: |
     git config --global user.email "yogesh.dhole@spurqlabs.com"
@@ -15,6 +21,6 @@ steps:
 - checkout: self
 
 - script: |
-    git remote add github https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExampleBackup.git
+    git remote add github https://$(GitHubUsername):$(GitHubPAT)@github.com/spurqlabs/TodoApiExampleBackup.git
     git push github --mirror --force
   displayName: 'Push to GitHub'
