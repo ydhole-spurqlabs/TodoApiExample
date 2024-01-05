@@ -1,26 +1,41 @@
+# trigger:
+#   branches:
+#     exclude:
+#       - '*'
+
+# pool:
+#   vmImage: 'windows-latest'
+
+# variables:
+#   - name: GitHubUsername
+#     value: 'ydhole-spurqlabs'
+#   - name: GitHubPAT
+#     value: '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'
+
+# steps:
+# - script: |
+#     git config --global user.email "yogesh.dhole@spurqlabs.com"
+#     git config --global user.name "ydhole-spurqlabs"
+#   displayName: 'Set Git Config'
+
+# - checkout: self
+
+# - script: |
+#     git remote add github https://$(GitHubUsername):$(GitHubPAT)@github.com/spurqlabs/TodoApiExampleBackup.git
+#     git push github --mirror --force
+#   displayName: 'Push to GitHub'
+
+
+#Azure-pipeline.yml for reference
 trigger:
-  branches:
-    exclude:
-      - '*'
-
+- master #your feature Branch, Run this pipeline from your feature branch.
 pool:
-  vmImage: 'windows-latest'
-
-variables:
-  - name: GitHubUsername
-    value: 'ydhole-spurqlabs'
-  - name: GitHubPAT
-    value: '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'
-
+  vmImage: ubuntu-latest
 steps:
-- script: |
-    git config --global user.email "yogesh.dhole@spurqlabs.com"
-    git config --global user.name "ydhole-spurqlabs"
-  displayName: 'Set Git Config'
-
-- checkout: self
-
-- script: |
-    git remote add github https://$(GitHubUsername):$(GitHubPAT)@github.com/spurqlabs/TodoApiExampleBackup.git
-    git push github --mirror --force
-  displayName: 'Push to GitHub'
+- checkout: self
+- bash: |
+  git push -- \
+  Prune //ghp_iYwH9mwvmWVAFCD@github.com/spurqlabs/TodoApiExample \
+  +refs/remotes/origin/master:refs/heads/master +refs/tags/:refs/tags/
+  displayName: ' to GitHub'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
