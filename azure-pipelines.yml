@@ -60,5 +60,10 @@ steps:
     git push --prune origin_with_token --all
     git push --prune origin_with_token --tags
   displayName: 'to GitHub'
+- bash: |
+    echo "Current branch: $(Build.SourceBranch)"
+    echo "Condition result: $(eq(variables['Build.SourceBranch'], 'refs/heads/main'))"
+  displayName: 'Debug Information'
+
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
