@@ -48,7 +48,7 @@
 
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: ubuntu-latest
@@ -61,16 +61,14 @@ steps:
 - checkout: self
 
 - bash: |
-    git remote add origin_with_token https://${{ variables.GitHubUsername }}:${{ variables.GitHubPAT }}@github.com/spurqlabs/TodoApiExample
+    git remote add origin_with_token https://${{ variables.GitHubUsername }}:${{ variables.GitHubPAT }}@github.com/spurqlabs/TodoApiExample.git
     git push origin_with_token --all
     git push origin_with_token --tags
   displayName: 'Push to GitHub'
 
 - bash: |
     echo "Current branch: $(Build.SourceBranch)"
-    echo "Condition result: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/main') }}"
+    echo "Condition result: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/master') }}"
   displayName: 'Debug Information'
-
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
 
