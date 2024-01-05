@@ -33,9 +33,8 @@ pool:
   vmImage: ubuntu-latest
 steps:
 - checkout: self
-- bash: |
-  git push -- \
-  Prune //ghp_iYwH9mwvmWVAFCD@github.com/spurqlabs/TodoApiExample \
-  +refs/remotes/origin/master:refs/heads/master +refs/tags/:refs/tags/
-  displayName: ' to GitHub'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+- bash: |
+    git push --prune https://ghp_cbvnn@github.com/spurqlabs/TodoApiExample \
+    +refs/remotes/origin/master:refs/heads/master+refs/tags/*:refs/tags/*
+  displayName: ' to GitHub'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
