@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: |
+    git config --global user.email "yogesh.dhole@spurqlabs.com"
+    git config --global user.name "ydhole-spurqlabs"
+  displayName: 'Set Git Config'
+
+- checkout: self
+
+- script: |
+    git remote add github https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExampleBackup.git
+    git push github --mirror
+  displayName: 'Push to GitHub'
