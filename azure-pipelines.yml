@@ -27,8 +27,28 @@
 
 
 #Azure-pipeline.yml for reference
+# trigger:
+# - master
+
+# pool:
+#   vmImage: ubuntu-latest
+
+# steps:
+# - checkout: self
+# - bash: |
+#     git remote add origin_with_token https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExample
+#     git push --prune origin_with_token --all
+#     git push --prune origin_with_token --tags
+#   displayName: 'to GitHub'
+#   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+
+
+
+
+
+
 trigger:
-- master
+- main
 
 pool:
   vmImage: ubuntu-latest
@@ -36,10 +56,9 @@ pool:
 steps:
 - checkout: self
 - bash: |
-    git remote add origin_with_token https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExample
+    git remote add origin_with_token https://$(GitHubUsername):$(GitHubPAT)@github.com/spurqlabs/TodoApiExample
     git push --prune origin_with_token --all
     git push --prune origin_with_token --tags
   displayName: 'to GitHub'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
