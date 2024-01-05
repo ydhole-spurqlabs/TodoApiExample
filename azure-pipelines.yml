@@ -15,6 +15,6 @@ steps:
 - checkout: self
 
 - script: |
-    git remote add github https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExampleBackup.git
-    git push github --mirror
+    git remote add github https://ydhole-spurqlabs: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@github.com/spurqlabs/TodoApiExampleBackup.git
+    git push -f github --mirror
   displayName: 'Push to GitHub'
